@@ -34,7 +34,7 @@ namespace CordwareNoGUIInjector
                         ConsoleUtils.LogError("Already Injected.");
                     else
                     {
-                        File.WriteAllText($"{versionfolderpath}\\modules\\discord_desktop_core", new HttpClient().GetAsync("https://raw.githubusercontent.com/Yaekith/Cordware/main/index.txt").Result.Content.ReadAsStringAsync().Result);
+                        File.WriteAllText($"{versionfolderpath}\\modules\\discord_desktop_core\\index.js", new HttpClient().GetAsync("https://raw.githubusercontent.com/Yaekith/Cordware/main/index.txt").Result.Content.ReadAsStringAsync().Result);
                         Directory.CreateDirectory($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware");
                         File.WriteAllText($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware\\payload.js", new HttpClient().GetAsync("https://raw.githubusercontent.com/Yaekith/Cordware/main/payload.js").Result.Content.ReadAsStringAsync().Result);
                         File.WriteAllText($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware\\client.js", new HttpClient().GetAsync("https://raw.githubusercontent.com/Yaekith/Cordware/main/client.js").Result.Content.ReadAsStringAsync().Result);
