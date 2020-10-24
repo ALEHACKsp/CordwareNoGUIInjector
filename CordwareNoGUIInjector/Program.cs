@@ -1,7 +1,10 @@
-﻿using System;
+﻿using CordwareNoGUIInjector.JSON;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,10 +44,19 @@ namespace CordwareNoGUIInjector
                         Directory.CreateDirectory($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware\\API");
                         File.WriteAllText($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware\\API\\API.js", new HttpClient().GetAsync("https://raw.githubusercontent.com/Yaekith/Cordware/main/API/API.js").Result.Content.ReadAsStringAsync().Result);
                         Directory.CreateDirectory($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware\\Plugins");
-                        File.WriteAllText($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware\\Plugins\\plugin.js", new HttpClient().GetAsync("https://raw.githubusercontent.com/Yaekith/Cordware/main/Plugins/plugin.js").Result.Content.ReadAsStringAsync().Result);
-                        File.WriteAllText($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware\\Plugins\\antimutespoofer.cord.js", new HttpClient().GetAsync("https://raw.githubusercontent.com/Yaekith/Cordware/main/Plugins/antimutespoofer.cord.js").Result.Content.ReadAsStringAsync().Result);
-                        File.WriteAllText($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware\\Plugins\\nobuildoverride.cord.js", new HttpClient().GetAsync("https://raw.githubusercontent.com/Yaekith/Cordware/main/Plugins/nobuildoverride.cord.js").Result.Content.ReadAsStringAsync().Result);
-                        ConsoleUtils.Log("Injected with 2 Plugins successfully (Anti Mute Spoofer and No Build Override)");
+                        var MainBranch = JsonConvert.DeserializeObject<TreeBranchGather>(new HttpClient().GetAsync("https://api.github.com/repos/Yaekith/Cordware/git/trees/main?recursive=1").Result.Content.ReadAsStringAsync().Result);
+                        int pluginCount = 0;
+
+                        foreach(var path in MainBranch.tree)
+                        {
+                            if (path.path.Contains("Plugins") && path.path != "Plugins")
+                            {
+                                pluginCount++;
+                                File.WriteAllText($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware\\Plugins\\{path.path.Split('/')[1]}", new HttpClient().GetAsync($"https://raw.githubusercontent.com/Yaekith/Cordware/main/{path.path}").Result.Content.ReadAsStringAsync().Result);
+                            }
+                        }
+
+                        ConsoleUtils.Log($"Injected with {pluginCount} plugin(s) successfully!");
                     }
                 }
             }

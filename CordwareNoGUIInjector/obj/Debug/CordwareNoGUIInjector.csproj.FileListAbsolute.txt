@@ -1,0 +1,7 @@
+C:\Users\benja\source\repos\CordwareNoGUIInjector\CordwareNoGUIInjector\bin\Debug\CordwareNoGUIInjector.exe.config
+C:\Users\benja\source\repos\CordwareNoGUIInjector\CordwareNoGUIInjector\bin\Debug\CordwareNoGUIInjector.exe
+C:\Users\benja\source\repos\CordwareNoGUIInjector\CordwareNoGUIInjector\bin\Debug\CordwareNoGUIInjector.pdb
+C:\Users\benja\source\repos\CordwareNoGUIInjector\CordwareNoGUIInjector\obj\Debug\CordwareNoGUIInjector.csprojAssemblyReference.cache
+C:\Users\benja\source\repos\CordwareNoGUIInjector\CordwareNoGUIInjector\obj\Debug\CordwareNoGUIInjector.csproj.CoreCompileInputs.cache
+C:\Users\benja\source\repos\CordwareNoGUIInjector\CordwareNoGUIInjector\obj\Debug\CordwareNoGUIInjector.exe
+C:\Users\benja\source\repos\CordwareNoGUIInjector\CordwareNoGUIInjector\obj\Debug\CordwareNoGUIInjector.pdb
