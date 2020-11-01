@@ -59,7 +59,7 @@ namespace CordwareNoGUIInjector
 
                             foreach (var path in MainBranch.tree)
                             {
-                                if (path.path.Contains("Plugins") && path.path != "Plugins")
+                                if (path.path.Contains("Plugins") && !path.path.Contains("OptionalPlugins") && path.path != "Plugins")
                                 {
                                     pluginCount++;
                                     File.WriteAllText($"{versionfolderpath}\\modules\\discord_desktop_core\\Cordware\\Plugins\\{path.path.Split('/')[1]}", httpclient.GetAsync($"https://raw.githubusercontent.com/Yaekith/Cordware/main/{path.path}").Result.Content.ReadAsStringAsync().Result);
